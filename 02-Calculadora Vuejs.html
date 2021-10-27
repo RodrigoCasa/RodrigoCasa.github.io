@@ -10,8 +10,10 @@
     O n1 digitado foi: {{ n1 }} <br />
     O n2 digitado foi: {{ n2 }} <br />
 
-    <input v-model="n1">
-    <input v-model="n2">
+    Soma: {{n1+n2}} <br />
+
+    <input v-model.number="n1">
+    <input v-model.number="n2">
 
   </div>
 
