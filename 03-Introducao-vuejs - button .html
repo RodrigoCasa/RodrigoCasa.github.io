@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>02 - introducao ao VueJs</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  
+  <div id="app-calc">
+    <div v-if="show">
+      <p>O primeiro número digitado: {{n1}}</p>
+      <p>O segundo número digitado: {{n2}}</p>
+    
+      <p>A soma dos dois números: {{ n1+n2 }}</p>
+      <p>A subtração dos dois números: {{ n1-n2 }}</p>
+      <p>A multiplição dos dois números: {{ n1*n2 }}</p>
+      <p>A divisão dos dois números: {{ n1/n2 }}</p>
+    </div>
+    <p v-if="show">Result: {{ result }}</p>
+
+    <input v-model.number="n1" type="number">
+    <input v-model.number="n2" type="number">
+    <br />
+    <br />
+    <button v-on:click="sumFunction">Sum</button>
+    <button v-on:click="subFunction">Sub</button>
+    <button v-on:click="multFunction">Mult</button>
+    <button v-on:click="divFunction">Div</button>
+
+
+    <button v-on:click="hiddenFunction">Hidden</button>
+
+    
+  </div>
+
+  <script>
+    var app7 = new Vue({
+        el: '#app-calc',
+        data: {
+            n1: 10,
+            n2: 2,
+            result:0,
+            show:true
+        },
+        methods: {
+          sumFunction: function () {
+              this.result = this.n1 + this.n2;
+          },
+          subFunction: function () {
+              this.result = this.n1 - this.n2;
+          },
+          multFunction: function () {
+              this.result = this.n1 * this.n2;
+          },
+          divFunction: function () {
+              this.result = this.n1 / this.n2;
+          },
+          hiddenFunction: function () {
+              if(this.show){
+                this.show = false;
+              }else{
+                this.show= true;
+              }55555555555555555555555
+          }
+       }
+    })
+  </script>
+</body>
+</html>

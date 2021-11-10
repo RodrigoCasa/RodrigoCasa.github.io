@@ -1,0 +1,68 @@
+<html>
+    <head>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        
+    </head>
+    <body>
+        
+
+        <div id="app_soma">
+             <h1>Calculadora Soma = {{resultado}}</h1>
+             <h2>O valor de N1 = {{n1}} e N2 = {{n2}}</h2>
+             <h3>O resultado = {{(n1+n2)*2}}</h3>
+             <h3> O resultado ={{resultado}} </h3>
+             <input v-model.number="n1" type="number"> <br /> <br />
+             <input v-model.number="n2"> <br /> <br />  
+             <button v-on:click="somarFuncao">Somar</button>
+             <button v-on:click="subFuncao">Subtrair</button>
+
+             <button @click="darkThemeSwitch">Switch Theme</button>
+        </div>
+        
+        <script>
+            
+            var app_soma = new Vue({
+                el:'#app_soma',
+                data:{
+                    n1: 0,
+                    n2: 0,
+                    resultado:0
+                },
+                methods:{
+                    somarFuncao: function(){
+                        this.resultado = this.n1 + this.n2;    
+                    },
+                    subFuncao: function(){
+                        this.resultado = this.n1 - this.n2;    
+                    },
+                    _addDarkTheme() {
+                        let darkThemeLinkEl = document.createElement("link");
+                        darkThemeLinkEl.setAttribute("rel", "stylesheet");
+                        darkThemeLinkEl.setAttribute("href", "darktheme.css");
+                        darkThemeLinkEl.setAttribute("id", "dark-theme-style");
+
+                        let docHead = document.querySelector("head");
+                        docHead.append(darkThemeLinkEl);
+                    },
+                    _removeDarkTheme() {
+                        let darkThemeLinkEl = document.querySelector("#dark-theme-style");
+                        let parentNode = darkThemeLinkEl.parentNode;
+                        parentNode.removeChild(darkThemeLinkEl);
+                    },
+                    darkThemeSwitch() {
+                        let darkThemeLinkEl = document.querySelector("#dark-theme-style");
+                        if (!darkThemeLinkEl) {
+                            this._addDarkTheme()
+                        } else {
+                            this._removeDarkTheme()
+                        }
+                    }
+             }
+            })
+            
+
+           
+        </script>
+    </body>
+</html>
